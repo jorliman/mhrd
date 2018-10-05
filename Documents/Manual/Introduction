@@ -1,0 +1,63 @@
+
+
+Intoduction
+===========
+
+This manual will tell you everything you need to know to start creating
+hardware elements. This chapter will give you a rough overview of what you have
+to do.. The other chapters will give you detailed information on specific
+topics. Also the manual contains a tutorial you may find helpful.
+
+In your job as an hardware engineer your task is to create designs for hardware
+elements. You will get specifications for the hardware elements you have to
+design and you will be provided with verification tests to prove that your
+design works correctly.
+
+Be aware, that in the "Explorer" window you will find a "Tasks" folder, which
+contains all the designs you have to finish and a "Completed" folder, with
+parts you either have completed yourself or you can simply use for your own
+designs.
+
+A specification always contains the interface specification, a graphical
+erpresentation and behavioral description of the element you have to design.
+- The interface specification is a list of inputs and outputs, each identified
+  by a separate id
+- The graphical representation helps you to visualize the element look, but
+  doesn't contain any additional information
+- The behavioral description contains a textual description of what the device
+  is supposed to do. It also gives you a complete or imcomplete list of
+  examples of what outuput values the device is supposed to generate for a
+  given set of inputs
+
+After you created your design you have to verify its correctness through the
+simulator integrated into the Microhard Development Environment. The
+verification process has following steps:
+- Check compliance of the design with the interface specification
+- Check compliance of the design with the syntax specification
+- Check if design passes all verification tests
+
+If the verification fails on the first two points, you will be given a
+corresponding error message. If one or more tests fail, you will be given a
+list of all tests and their results.
+
+If you have problems creating a design try following approach:
+
+1.  Read the element specification carefully.
+1a. If it contains references to other elements or the manual, read the
+    corresponding element specifications or manual chapters.
+2.  Draw out a design on a piece of paper. You are allowed to use any already
+    completed hardware elements as part of your new design.
+3.  Once you think your design is correct, start writing it down in the
+    "Design"-tab of the workspace according to the syntax specification.
+4.  Press CTRL+ENTER to start the verification process
+4a. In case you get an error message, closely inspect the error message and go
+    back to step 3 to fix the problem in the design.
+4b. In case one or more tests fail, picl a failed test and try to understand
+    what happens if you apply its input values to your design and why your
+    design's output values differ from the expected output values in the test.
+    Go back to step 2 to fix that issue.
+5.  If you made your way to this step: Congratulations! You successfully
+    created the design for a piece of hardware.
+
+The tutorial contained in this manual should prepare you to complete the first
+actual tasks.
