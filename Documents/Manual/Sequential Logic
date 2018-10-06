@@ -1,0 +1,29 @@
+
+
+Sequential Logic
+================
+
+This chapter explains relevant aspects of sequential logic.
+
+If you change the input values of a NAND gate, it doesn't change its output
+values immediately, but instead it needs a short time to re-adjust. In
+extension this is true for all hardware elements based on the NAND gate.
+
+When doing the verification this is considered by using a clock. Each clock
+cycle only one test is performed and the clock cycles are far apart enough, so
+that the whole hardware element has time to stabilize its outputs.
+
+What is apparent though is that each clock cycle and therefore test is
+completely independent from the previous ones for non-sequential logic elements
+(like the NAND gate).
+
+The D-Flip-Flop or DEF element however has a memory. Its output value is the
+input value of the last clock cycle. Therefore its outoput value is completely
+independent on its input value for the current clock cycle and instead it
+solely relies on its input value of the last clock cycle. This is what enables
+the design of memory elements.
+
+However it also means that a test con't be done in a single test step or clock
+cycle anymore and instead you have to consider all test steps as a sequence.
+Therefore you might find test steps expecting an output value of "x" which
+simply means, that for that test step the output value is irrelevant.
