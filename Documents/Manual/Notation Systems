@@ -1,0 +1,110 @@
+
+
+Notational Systems
+==================
+
+This chapter explains aspects of different number notation systems used within
+the Microhard Development Environment.
+
+
+Binary Notation:
+----------------
+
+When numbers are written in the context of hardware elements (for example with
+adders), then the binary notation is used. This way each binary digit
+corresponds to a pin. Note that when we write numbers, we always write the
+least significant digit on the right, which will in busses also be the pin
+indexed as "1".
+
+
+Converting a number from binary to decimal:
+-------------------------------------------
+
+To convert a number from a binary to a decimal representation, we need to
+determine a value for each digit and add up those values. The value we assign
+each digit is:
+x * 2^i
+Where x is the value (either 1 or 0) and i is the position (indexed from right
+to left beginning with a zero).
+
+For example the binary number "1010" would be converted as follow:
+
+i:3210
+x:1010
+
+Result: 0*2^0 + 1*2^1 + 0*2^2 + 1*2^3 = 10
+
+
+Converting a number from decimal to binary:
+-------------------------------------------
+
+When converting from decimal to binary notation we need to take the reverse
+approach.
+
+1.  We need to find the smallest n for which 2^(n+1) is bigger than the decimal
+    number x we want convert.
+2.  Now we check if our number is greater or equal than 2^n.
+2a. If so, we subtract 2^n from x and write down the binary digit "1".
+2b. Otherwise we don't change x and write down the binary digit "0".
+3.  We subtract 1 from  n and while n>=0 we go back to step 2.
+
+Fro x=10 (decimal):
+1. n=3, becuase 2^3<10<2^4
+2. 10 >=2^3, so our first digit is "1"and we set x = 10 - 2^3 = 2
+3. 2 < 2^2, so our second digiti is "0".
+4. 2 >=2^1, so our third digiti is "1" and we set x = 2-2 = 0
+5. 0 < 2^0, so our last digit is "0"
+6. The resulting binary number is "1010"
+
+
+Notation of negative binary numbers:
+------------------------------------
+
+When we build hardware elements which operate on numbers they have a fixed bus
+widht. So even though the number "1" could be represented in one bit, we have 3
+spare bits in a 4-Bit Adder (making the exact value "0001").
+
+Negative numbers could be represented by taking the most left bit and using it
+as an indicator whether a number is negative. The better approach however is to
+use the two's complement form.. In this form a number is positive or zero if the
+most left bit is "0" and a number is negative if the most left bit is "1".. To
+make a number negative, we take its positive form, negate all bits and add "1"
+to the resulting number. This has the main advantage, that when adding up
+numbers, we don't need to care about whether they are positive or negative. The
+addition as described in the next section will always work and deliver the
+right result.
+
+Adding binary numbers:
+----------------------
+Adding up binary numbers is as easy as ading decimal numbers. You can write
+two numbers below each other and add them up. If the result is >1, you have to
+use a carry (like you would in the decimal system if two numbers added up were
+>=10).
+
+For example the binary number "1010" (decimal value 10) and the binary number
+"11" (decimal value 3) can be added like this:
+
+  1010
++ 0011
+======
+  1101 (decimal 13)
+    x
+
+Note that in the column marked "x" the 1+1=0 + carry, which is added in the
+next column. This works for positive, negative and mixed operands, when using
+two's complement form for negative numbers.
+
+
+Hexadecimal Notation:
+---------------------
+
+The hexadecimal notation is used where 16-Bit busses are used. Converting from
+and to decimal notation works the same way as it does with the binary system,
+but instead of using the "2^?", use "16^?". Also since the hexadecimal system
+represents 16 values in one digit, but we now only 10 numbers (0 to 9), we use
+A,B,C,D,E,F for the values 10,11,12,13,14,15. Further when we write a
+hexadecimal number, we always write 0x in front of it, so we don't confuse it
+with a decimal number. Another advantage of hexadecimal notation is, that it
+breaks down nicely to the binary notation. 4 binary digits can be exactly
+expressed in 1 hexadecimal digit. Therefore no complicated conversion is
+necessary as it is with conversions involving gthe decimal system.
