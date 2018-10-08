@@ -1,0 +1,42 @@
+Tutorial 1 - Specification
+==========================
+
+Description:
+------------
+This tutorial is meant to get uou started with the Microhard Development
+Environment. This tutorial has the exact same structure a normal hardware
+element has, except that it basically provides you with a working solution.
+
+What you are currently reading is the specification of the TUT1 hardware
+element. In this tutorial we will create a design for it which has the
+following behavior:
+
+"The TUT1 element has two inputs and two outputs. The first output should
+output whatever value the second input has and the second output should output
+the value of the first input."
+
+Make sure you read the rest of this specification and then head over to the
+"Design"-tab.
+
+Interface Specification:
+------------------------
+Inputs: in1, in2
+Outputs: out1, out2;
+
+
+Graphical Representation:
+-------------------------
+       ______
+-in1--|      |--out1-
+      | TUT1 |
+-in2--|______|--out2-
+
+
+Example:
+--------
+ in1 | in2 || out1 | out2
+ -------------------------
+ 0   | 0   || 0    | 0
+ 0   | 1   || 1    | 0
+ 1   | 0   || 0    | 1
+ 1   | 1   || 1    | 1
