@@ -1,0 +1,35 @@
+// The interface spec of the NAND Gate:
+Inputs: in1, in2;
+Outputs: out;
+
+// Now to build a NAND gate based on a NAND gate is kind
+// of pointless in the bigger scheme of thingsm but here
+// is how it would look like:
+//
+//       +----------+
+//       |  ______  |
+//  -in1-|-|      | |
+//       | | NAND |-|--out-
+//  -in2-|-|______| |
+//       +----------+
+
+// Now between the interface and the "Wires" section there
+// is a "Parts" section where you need to specify which
+// parts are used within your design
+Parts:
+  myNand NAND
+;
+// so the syntax here is:
+// [id] [part_type]
+// you can choose an id, but the part type has to be in
+// the completed section of the designs
+// like with wires, declare as many devices as you want to used
+
+Wires:
+  in1 -> myNand.in1, in2 -> myNand.in2,
+  myNand.out -> out
+;
+// so you can connect the element's pins to the pins of the NAND
+// make sure to reference the right part via its id, you declared
+
+// again: CTRL+ENTER to check this design if you want
